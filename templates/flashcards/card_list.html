@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <h3>List of Cards</h3>
+
+    {% for card in cards %}
+        <H4> 🎁 {{ card.box }} Box</H4>
+        <article>
+            {{ card }}
+        </article>
+    {% endfor %}
+{% endblock content %}
