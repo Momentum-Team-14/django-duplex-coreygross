@@ -1,0 +1,36 @@
+h1{
+    color: orange;
+    text-align: center;
+
+}
+
+body{
+    text-align: center;
+}
+
+.nav-bar{
+    text-align: center;
+}
+
+.home{
+    color: orange;
+    font-size: 2rem;
+    margin: 10px;
+}
+
+.showFlashcards{
+    border: solid; 
+    border-color:orange; 
+    border-radius: 50px; 
+    max-width: 300px;
+    margin-bottom: 20px;
+    padding: 20px;
+    margin-left: 38%;
+
+
+}
+
+.showFlashcards:hover{
+    background-color: yellow;
+}
+

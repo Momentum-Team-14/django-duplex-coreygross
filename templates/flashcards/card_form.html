@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>Create New Flashcard</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save Card">
+        <p><a href="{% url 'card-list' %}" class="button">
+            <button>Cancel</button></a></p>
+
+        </a>
+    </form>
+{% endblock content %}

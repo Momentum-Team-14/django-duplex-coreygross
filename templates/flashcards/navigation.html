@@ -1,0 +1,11 @@
+{% load static %}
+{% load cards_tags %}
+
+
+<nav class="nav-bar">
+    <a href="{% url 'index-page' %}" class="home">Home Page</a>
+    <a href="{% url 'card-list' %}" class="home">🗂 All Cards</a>
+    <a href="/accounts/login/" class="home">Login</a>
+    <a href="/accounts/register/" class="home">Register</a>
+</nav>
+{% boxes_as_links %}
