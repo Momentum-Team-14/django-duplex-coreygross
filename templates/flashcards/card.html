@@ -3,20 +3,21 @@
 
 {% block content %}
 <article class="showFlashcards">
-    <h4>{{ card.question }}</h4>
+    <h4 class="question">{{ card.question }}</h4>
     {% if not check_card %}
-        <p>{{ card.answer }}</p>
-        <p><a href="{% url 'card-edit' pk=card.pk %}" class = "edit_buttons">
-        <button>EDIT CARD</button>
+        <p class="answer">{{ card.answer }}</p>
+        <p><a href="{% url 'card-edit' pk=card.pk %}" >
+        <button class="edit_buttons">EDIT CARD</button>
         </a></p>
-        <p><a href="{% url 'delete-card' pk=card.pk %}" class="edit_buttons"onclick="if (!confirm('Are you sure?')) { return false }"><button>DELETE</button>
+        <p><a href="{% url 'delete-card' pk=card.pk %}" onclick="if (!confirm('Are you sure?')) { return false }"><button class="edit_buttons">DELETE</button>
         </a></p>
     {% else %}
         <details>
-            <summary>Reveal Answer</summary>
-            <p>{{ card.answer }}</p>
+            <summary class="show-answer"><u>Show Answer</u></summary>
+            <p class="answer"><strong>{{ card.answer }}</strong></p>
         </details>
         <hr>
+        <p style="font-style: italic;"">Did you get the answer correct?</p>
         {% include "flashcards/card_check_form.html" with solved=True %}
         {% include "flashcards/card_check_form.html" with solved=False %}
     {% endif %}

@@ -4,12 +4,29 @@ h1{
 
 }
 
+
+
+.question{
+    font-family: cursive;
+    font-size: 2rem;
+}
+
 body{
     text-align: center;
 }
 
 .nav-bar{
     text-align: center;
+}
+
+.edit_buttons{
+    border-radius: 10px;
+    background-color: darkkhaki;
+
+}
+
+.box-list{
+    font-size: 2rem;
 }
 
 .home{

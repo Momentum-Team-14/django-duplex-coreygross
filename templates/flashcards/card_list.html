@@ -10,7 +10,7 @@
     
         {% for card in cards %}
             {% ifchanged %}
-                <H4> 🎁 {{ card.box | ordinal }} Box</H4>
+                <H4 class="box-list"> 🗳 {{ card.box | ordinal }} Box</H4>
             {% endifchanged %}
             <div class="container">
                 {% include "flashcards/card.html" %}

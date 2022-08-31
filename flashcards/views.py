@@ -36,6 +36,11 @@ def delete_card(request, pk):
     card.delete()
     return redirect('card-list')
 
+def user_profile (request):
+    cards = Card.objects.filter(user=request.user)
+    
+
+}
 
 def edit_card(request, pk):
     card = get_object_or_404(Card, pk=pk)
