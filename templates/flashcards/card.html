@@ -5,11 +5,11 @@
 <article class="showFlashcards">
     <h4 class="question">{{ card.question }}</h4>
     {% if not check_card %}
-        <p class="answer">{{ card.answer }}</p>
+        <p class="answer"><strong>Answer: {{ card.answer }}</strong></p>
         <p><a href="{% url 'card-edit' pk=card.pk %}" >
-        <button class="edit_buttons">EDIT CARD</button>
+        <button class="edit_buttons">EDIT/MOVE CARD</button>
         </a></p>
-        <p><a href="{% url 'delete-card' pk=card.pk %}" onclick="if (!confirm('Are you sure?')) { return false }"><button class="edit_buttons">DELETE</button>
+        <p><a href="{% url 'delete-card' pk=card.pk %}" onclick="if (!confirm('Are you sure?')) { return false }"><button class="edit_buttons">DELETE CARD</button>
         </a></p>
     {% else %}
         <details>

@@ -4,22 +4,19 @@
 
 {% block content %}
 
-    <h2> Your Flashcards</h2>
-    <p>Here are your flashcards</p>
+    <h2>Hi {{ user.username }}</h2>
+    <p>Here are your flashcards for you to Review, Edit, or Delete</p>
+    <p>Test yourself by clicking on the 🗳boxes above </p>
     <hr>
-    <p><a href="{% url 'card-create' %}" class="Create-button">
-    <button>Create New Card</button></a></p>
+    <p><a href="{% url 'card-create' %}">
+    <button class="edit_buttons">Create New Card</button></a></p>
     {% for card in cards %}
         {% ifchanged %}
             <H4 class="box-list"> 🗳 {{ card.box | ordinal }} Box</H4>
         {% endifchanged %}
-        {% if user.is_authenticated %}
                 <div class="container">
                     {% include "flashcards/card.html" %}
                 </div>
-        {% else %}
-            <p>You are not <a href="/accounts/login/" class="home">logged-in</a></p>
-        {% endif %}
     {% endfor %}
     
     

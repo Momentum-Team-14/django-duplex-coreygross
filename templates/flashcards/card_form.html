@@ -6,9 +6,9 @@
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Save Card">
-        <p><a href="{% url 'card-list' %}" class="button">
-            <button>Cancel</button></a></p>
+        <input type="submit" value="Save Card" class="edit_buttons">
+        <p><a href="{% url 'card-list' %}">
+            <button class="edit_buttons">Cancel</button></a></p>
 
         </a>
     </form>

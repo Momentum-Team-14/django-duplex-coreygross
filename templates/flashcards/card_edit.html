@@ -3,13 +3,14 @@
 
 {% block content %}
 
-<h2>Edit Card</h2>
+<h2>Edit/Move Card</h2>
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="save btn btn-secondary">Save</button>
+    <hr>
+    <button type="submit" class="edit_buttons">Save</button>
     <p><a href="{% url 'card-list' %}" class="button">
-        <button>Cancel</button></a></p>
+        <button class="edit_buttons">Cancel</button></a></p>
 </form>
 
 

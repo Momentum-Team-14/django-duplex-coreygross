@@ -12,10 +12,8 @@
             {% ifchanged %}
                 <H4 class="box-list"> 🗳 {{ card.box | ordinal }} Box</H4>
             {% endifchanged %}
+            <p>Hi {{ user.username }}</p>
             <div class="container">
-                {% if user.is_authenticated %}
-                    <p>Hi {{ user.username }}</p>
-                {% endif %}
                 {% include "flashcards/card.html" %}
             </div>
             

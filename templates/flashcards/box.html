@@ -5,6 +5,7 @@
 {% block content %}
     <h2>🗃 {{ box_number | ordinal }} Box</h2>
     <mark>{{ object_list | length }}</mark> Card{{ object_list | pluralize }} left in box.
+    <p><i> If you answer correctly, cards will move to next box</i></p>
     <hr>
         {% if check_card %}
             {% include "flashcards/card.html" with card=check_card %} 
