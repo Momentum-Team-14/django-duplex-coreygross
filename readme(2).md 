@@ -1,0 +1,112 @@
+"""#Flash Cards Project
+Goal of App: make an app for users to:
+- log-in
+- create flashcards
+- test themselves by hiding and revealing answers
+- if answered correctly, have the ability to move cards to other boxes
+- have the ability to create, edit and delete flashcards
+- have the ability to logout and change users
+
+To Start Project:
+
+In your terminal:
+- make a directory inside your desired folder
+- go into that directory
+- pipenv install django
+- pipenv shell
+- django-admin startproject config .
+- python manage.py startapp flashcards
+     - you can change name of flashcards if you wanted
+- code .
+
+In VisualCode:
+- add templates folder in your directory
+- add a flashcards app in templates folder. 
+- create a base.html in flashcards folder
+  - all other html's created will go into flashcards folder
+- go into settings in config, add 'flashcards' into the bottom of the installed apps
+- in settings, under "templates" in the DIRS [], add 'templates'
+- in settting, underneath the line of STATIC_URL, type
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+- go out of setting and add a static folder (not in config nor flashcards)
+- inside the static folder, add a 'css' folder. inside the css folder, add a style.css page
+
+To have one-step log-ins:
+- use this link https://django-registration-redux.readthedocs.io/en/latest/simple-backend.html
+
+In config/urls.py, make sure to add:
+path("", include('flashcards.urls')),
+ *this will connect your flashcards/urls.py to the congif/urls.py
+
+Create Models
+- create models that can be used for card information
+- create a class Card(models.Model)
+  - input things you need for the project and flashcards like:
+     - questions, answers, box, date created, users, etc. 
+- after creating your models, you will need to migrate your models in your terminal
+- in your terminal, in your directory:
+  - type "python manage.py makemigrations
+  - after that is cleared, you can type "python manage.py migrate"
+    - any changes in models, need to be migrated once completed throughout the project
+
+On Base.html
+ - go to html:5 to add head and body of the base page
+ - add in css into the head "<link rel="stylesheet" href="{% static 'css/style.css' %}">
+ - add a title in head
+ - in the body, add in two line:
+     {% block content %}
+    {% endblock content %}
+- above the head, you can also add {% load static %}
+*This base html page will be used on all of your pages. The block content
+will need to be added on all the html pages wherever you want to add info on the page
+
+Add an index.html in templates/flashcards/ folder. In this html:
+ - at the top, type:
+ {% extends 'base.html' %}
+ {% load static %}
+ * this will bring in the base.html page and css
+ - also add underneath:
+      {% block content %}
+    {% endblock content %}
+    *inside these template blocks, you will need to put your added info for the page
+
+To link index.html as your home page, add url.py in your flashcards folder
+In the flashcards/url.py
+ - add in these line to import at the top of the page:
+from django.contrib import admin
+from django.urls import path, include
+from . import views
+ - the underneath that, add in:
+ urlpatterns = [
+    path("", views.index_page, name="index-page"),
+    ]
+  *this will link your index page as your home page
+
+To finalize the link, go to views.py:
+ - add:
+ def index_page(request):
+    return render(request, 'flashcards/index.html', {})
+    *this will be used to call the index page.
+- also add at the top of the page things to import:
+from .models import Card
+
+
+From here, you can continue to build your pages using views, urls, and htmls. You can also use css to style
+
+At some point, you will need to create a forms.py folder in your flashcards folder
+ - once created, make sure to add at the top:
+from django import forms
+from .models import Card
+ - from here, you can create your forms that will use your model fields in your Card def.
+
+As you work through your project, in your directory (in your terminal),
+you can check the site by running "python manage.py runserver" to check for errors and see what 
+works and doesn't work. 
+
+As you work through your project, make sure to git push when getting to good points in your coding 
+so you can go back and have that saved work in case you break code later.
+
+
+
