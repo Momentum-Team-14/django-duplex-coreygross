@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+    <h2> Your Flashcards</h2>
+    <p>Here are your flashcards</p>
+    <hr>
+    <p><a href="{% url 'card-create' %}" class="Create-button">
+    <button>Create New Card</button></a></p>
+    {% for card in cards %}
+        {% ifchanged %}
+            <H4 class="box-list"> 🗳 {{ card.box | ordinal }} Box</H4>
+        {% endifchanged %}
+        {% if user.is_authenticated %}
+                <div class="container">
+                    {% include "flashcards/card.html" %}
+                </div>
+        {% else %}
+            <p>You are not <a href="/accounts/login/" class="home">logged-in</a></p>
+        {% endif %}
+    {% endfor %}
+    
+    
+
+{% endblock content %}

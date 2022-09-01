@@ -26,19 +26,33 @@ body{
 }
 
 .box-list{
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .home{
     color: orange;
     font-size: 2rem;
+    margin: 20px;
+}
+
+.home-page{
+    color: orange;
+    font-size: 3rem;
+    margin: 20px;
+}
+
+.boxes{
+    color: orange;
+    font-size:1.5rem;
     margin: 10px;
 }
+
 
 .showFlashcards{
     border: solid; 
     border-color:orange; 
     border-radius: 50px; 
+    border-width: 5px;
     max-width: 300px;
     margin-bottom: 20px;
     padding: 20px;

@@ -21,8 +21,9 @@ class Card (models.Model):
         default=BOXES[0]
     )
     date_created = models.DateTimeField(auto_now_add=True)
+    users = models.ManyToManyField('User', related_name='cards')
 
-    def move (self, solved):
+    def move(self, solved):
         new_box = self.box + 1 if solved else BOXES[0]
 
         if new_box in BOXES:

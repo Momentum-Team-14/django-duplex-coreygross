@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 from .forms import CreateCard
 import random
 from .forms import CardCheckForm
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -15,8 +16,9 @@ def index_page(request):
     return render(request, 'flashcards/index.html', {})
 
 
+@login_required
 def card_list(request):
-    cards = Card.objects.all()
+    cards = Card.objects.filter(users=request.user)
     return render(request, 'flashcards/card_list.html', {"cards": cards})
 
 
@@ -25,6 +27,8 @@ def card_create(request):
         form = CreateCard(request.POST, request.FILES)
         if form.is_valid():
             card = form.save()
+            card.users.add(request.user)
+            card.save()
             return redirect('card-list')
     else:
         form = CreateCard()
@@ -36,11 +40,12 @@ def delete_card(request, pk):
     card.delete()
     return redirect('card-list')
 
-def user_profile (request):
-    cards = Card.objects.filter(user=request.user)
-    
 
-}
+@login_required
+def user_profile(request):
+    cards = Card.objects.filter(users=request.user)
+    return render(request, 'flashcards/profile.html', {"cards": cards})
+    
 
 def edit_card(request, pk):
     card = get_object_or_404(Card, pk=pk)
@@ -64,7 +69,9 @@ class BoxView(CardListView):
     form_class = CardCheckForm
 
     def get_queryset(self):
-        return Card.objects.filter(box=self.kwargs["box_num"])
+        username = self.request.user.username
+        my_card_list = Card.objects.filter(users__username=username, box=self.kwargs["box_num"])
+        return my_card_list
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

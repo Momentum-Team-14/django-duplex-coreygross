@@ -10,6 +10,6 @@ urlpatterns = [
     path('flashcards/<int:pk>/edit', views.edit_card, name="card-edit"),
     path('flashcards/delete/<int:pk>', views.delete_card, name='delete-card'),
     path("box/<int:box_num>", views.BoxView.as_view(), name="box"),
-
+    path("profile", views.user_profile, name="user-profile")
 
 ]

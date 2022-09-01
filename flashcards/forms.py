@@ -8,7 +8,6 @@ class CardCheckForm(forms.Form):
     solved = forms.BooleanField(required=False)
 
 
-
 class CreateCard(forms.ModelForm):
 
     class Meta:
