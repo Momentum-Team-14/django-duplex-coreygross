@@ -6,7 +6,7 @@
 
     <h2>Cards</h2>
     <p><a href="{% url 'card-create' %}" class="Create-button">
-    <button>Create New Card</button></a></p>
+    <button class="edit_buttons">Create New Card</button></a></p>
     
         {% for card in cards %}
             {% ifchanged %}

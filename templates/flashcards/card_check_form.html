@@ -4,8 +4,8 @@
     <input type="hidden" name="card_id" value="{{ card.id }}">
     <input type="hidden" name="solved" value="{{ solved }}">
     {% if solved %}
-        <input type="submit" value="✅ YES"/>
+        <input class="edit_buttons" type="submit" value="✅ YES"/>
     {% else %}
-        <input type="submit" value="❌ NO"/>
+        <input class="edit_buttons" type="submit" value="❌ NO"/>
     {% endif %}
 </form>
